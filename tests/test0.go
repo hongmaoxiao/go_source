@@ -12,7 +12,11 @@ const a_const = 0
 
 const (
 	pi = /* the usual */ 3.14159265358979323
-	e  = 2.718281828
+	e  = 2.718281828;
+	mask1 int = 1 << iota;
+	mask2 = 1 << iota;
+	mask3 = 1 << iota;
+	mask4 = 1 << iota;
 )
 
 type (
@@ -22,6 +26,14 @@ type (
 	}
 	Point2 Point
 )
+
+func (p *Point) Initialize(x, y int) {
+	p.x, p.y = x, y
+}
+
+func (p *Point) Distance() int {
+	return p.x * p.x + p.y * p.y
+}
 
 var (
 	x1      int
@@ -45,7 +57,9 @@ func swap(x, y int) (u, v int) {
 }
 
 func control_structs() {
-	i := 0
+	var p Point = new(Point).Initialize((2, 3);
+	i := p.Distance();
+	var f float = 0.3;
 	for {}
 	for {};
 	for j := 0; j < i; j++ {
@@ -53,12 +67,16 @@ func control_structs() {
 		} else i = 0;
 		var x float
 	}
-	foo: switch {
+	foo: // a label
+	switch {
 	case i < y:
+		fallthrough
 	case i < j:
 	case i == 0, i == 1, i == j:
 		i++; i++;
+		goto foo;
 	default:
+		i = -+-+i;
 		break
 	}
 }
